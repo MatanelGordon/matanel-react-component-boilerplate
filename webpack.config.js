@@ -1,6 +1,8 @@
 const path = require('path');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const pkg = require('./package.json');
 
+const OUT_DIR = "dist";
 const cssLoader = {
     loader: "css-loader",
     options: {
@@ -12,9 +14,20 @@ const cssLoader = {
 
 const config = {
     mode: "production",
-    devtool: "source-map",
+    devtool: process.env['NODE_ENV'] === 'development' ? "inline-source-map" : "eval-source-map",
     entry: {
-        main: './src/index.ts',
+        main: './src/index.ts'
+    },
+    output: {
+        path: path.resolve(OUT_DIR),
+        filename: "index.js",
+        module: true,
+        library: {
+            type: "module"
+        },
+        environment: {
+            module: true
+        }
     },
     experiments: {
         outputModule: true
@@ -25,7 +38,13 @@ const config = {
             {
                 test: /\.tsx?/,
                 use: {
-                    loader: "ts-loader"
+                    loader: "ts-loader",
+                    options: {
+                        compilerOptions:{
+                            outDir: OUT_DIR
+                        },
+                        onlyCompileBundledFiles: true
+                    }
                 },
                 exclude: /node_modules/
             },
@@ -33,15 +52,13 @@ const config = {
                 test: /\.css$/,
                 use: [
                     'style-loader',
-                    cssLoader
-                ]
-            },
-            {
-                test: /\.s[ac]ss$/,
-                use: [
-                    'style-loader',
                     cssLoader,
-                    'sass-loader'
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            implementation: require('postcss'),
+                        }
+                    }
                 ]
             }
         ]
@@ -50,6 +67,10 @@ const config = {
         extensions: ['.ts', '.tsx', '.js'],
         modules: ["node_modules"]
     },
+    externals: Object.keys({
+        ...pkg.dependencies,
+        ...pkg.peerDependencies
+    }).reduce((acc, dep) => ({...acc, [dep]:dep}), {}),
     optimization: {
         usedExports: true,
         minimizer: [
@@ -65,26 +86,4 @@ const config = {
     },
 }
 
-module.exports = [
-    {
-        ...config,
-        output: {
-            path: path.resolve('dist'),
-            filename: "index.js",
-            module: true,
-            library: {
-                type: "module"
-            }
-        },
-    },
-    {
-        ...config,
-        output: {
-            path: path.resolve('dist'),
-            filename: "index.common.js",
-            library: {
-                type: "commonjs2"
-            }
-        }
-    }
-]
+module.exports =  config;

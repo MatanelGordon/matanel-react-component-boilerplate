@@ -1,0 +1,9 @@
+.a{
+  display: flex;
+  flex-direction: column;
+}
+
+.b{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}

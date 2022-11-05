@@ -15,10 +15,14 @@
     "dist/"
   ],
   "devDependencies": {
+    "@types/react": "^18.0.25",
+    "@types/webpack": "^5.28.0",
     "@vitest/ui": "^0.24.3",
     "autoprefixer": "^10.4.13",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.2.2",
+    "postcss": "^8.4.18",
+    "postcss-loader": "^7.0.1",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
     "style-loader": "^3.3.1",
@@ -29,6 +33,13 @@
     "webpack-cli": "^4.10.0"
   },
   "sideEffects": [
-    "src/index.ts"
-  ]
+    "src/index.ts",
+    "*.css",
+    "*.scss",
+    "*.less",
+    "*.styl"
+  ],
+  "peerDependencies": {
+    "react": ">=16"
+  }
 }

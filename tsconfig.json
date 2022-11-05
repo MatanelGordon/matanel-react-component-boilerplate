@@ -3,12 +3,12 @@
     "module": "ESNext",
     "target": "es5",
     "declaration": true,
-
-    "outDir": "dist",
+    "jsx": "react-jsx",
+    "sourceMap": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "Node"
   },
   "include": [
     "src"
