@@ -1,0 +1,40 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"plugins": [
+		"@typescript-eslint"
+	],
+	"extends": [
+		"plugin:react-hooks/recommended",
+		"stylelint",
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"env": {
+		"es6": true
+	},
+	"rules": {
+		"indent": [
+			"warn",
+			"tab"
+		],
+		"no-implicit-coercion": "off",
+		"react-hooks/exhaustive-deps": ["warn", {
+			// Add more custom hooks with deps here
+			"additionalHooks": ""
+		}]
+	},
+	"settings": {
+		"node": {
+			"tryExtensions": [".tsx", ".ts", ".d.ts"]
+		}
+	},
+	"ignorePatterns": [
+		"*.md",
+		"*.msx",
+		"*.js",
+		"package.json",
+		"*.css"
+	]
+}
