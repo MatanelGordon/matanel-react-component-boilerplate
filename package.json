@@ -53,10 +53,7 @@
 	},
 	"sideEffects": [
 		"src/index.ts",
-		"*.css",
-		"*.scss",
-		"*.less",
-		"*.styl"
+		"*.css"
 	],
 	"peerDependencies": {
 		"react": ">=16"
