@@ -17,8 +17,6 @@
 		"dist/"
 	],
 	"devDependencies": {
-		"@commitlint/cli": "^17.2.0",
-		"@commitlint/config-conventional": "^17.2.0",
 		"@types/react": "^18.0.25",
 		"@types/webpack": "^5.28.0",
 		"@typescript-eslint/eslint-plugin": "^5.42.0",
