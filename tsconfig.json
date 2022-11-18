@@ -1,19 +1,15 @@
 {
-  "compilerOptions": {
-    "module": "ESNext",
-    "target": "es5",
-    "declaration": true,
-    "jsx": "react-jsx",
-    "sourceMap": true,
-    "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
-    "moduleResolution": "Node"
-  },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+	"compilerOptions": {
+		"target": "ESNext",
+		"lib": ["esnext", "dom"],
+		"declaration": true,
+		"jsx": "react-jsx",
+		"sourceMap": true,
+		"strict": true,
+		"allowSyntheticDefaultImports": true,
+		"noImplicitAny": true,
+		"moduleResolution": "Node"
+	},
+	"include": ["src"],
+	"exclude": ["node_modules"]
 }

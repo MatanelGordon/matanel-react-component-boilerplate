@@ -15,40 +15,43 @@ const cssLoader = {
 }
 
 const config = {
-	mode: "production",
-	devtool: process.env['NODE_ENV'] === 'development' ? "inline-source-map" : "source-map",
+	mode: 'production',
+	devtool: process.env['NODE_ENV'] === 'development' ? 'inline-source-map' : 'source-map',
 	entry: {
-		main: './src/index.ts'
+		main: './src/index.ts',
 	},
 	output: {
 		path: path.resolve(OUT_DIR),
-		filename: "index.js",
+		filename: 'index.js',
 		module: true,
 		library: {
-			type: "module"
+			type: 'module',
 		},
 		environment: {
-			module: true
-		}
+			module: true,
+		},
 	},
 	experiments: {
-		outputModule: true
+		outputModule: true,
 	},
-	target: ["es2020", 'node'],
+	target: ['es2020', 'node'],
 	module: {
 		rules: [
 			{
-				test: /\.tsx?/,
+				test: /\.tsx?$/,
 				use: {
-					loader: "ts-loader",
+					loader: 'ts-loader',
 					options: {
+						configFile: 'tsconfig.prod.json',
 						compilerOptions: {
-							outDir: OUT_DIR
+							outDir: OUT_DIR,
+							target: 'esnext',
+							module: 'esnext',
 						},
-						onlyCompileBundledFiles: true
-					}
+						onlyCompileBundledFiles: true,
+					},
 				},
-				exclude: /node_modules/
+				exclude: /node_modules/,
 			},
 			{
 				test: /\.css$/,
@@ -56,44 +59,50 @@ const config = {
 					'style-loader',
 					cssLoader,
 					{
-						loader: "postcss-loader",
+						loader: 'postcss-loader',
 						options: {
 							implementation: require('postcss'),
-						}
-					}
-				]
-			}
-		]
+						},
+					},
+				],
+			},
+			{
+				test: /\.(png | jpg | jpeg | webp | avif | apng)$/,
+				type: 'asset/resource',
+			},
+			{
+				test: /\.svg$/,
+				type: 'asset/inline'
+			},
+		],
 	},
 	resolve: {
 		extensions: ['.ts', '.tsx', '.js'],
-		modules: ["node_modules"]
+		modules: ['node_modules'],
 	},
 	externals: Object.keys({
 		...pkg.dependencies,
-		...pkg.peerDependencies
-	}).reduce((acc, dep) => (
-		{...acc, [dep]: dep}
-	), {}),
+		...pkg.peerDependencies,
+	}).reduce((acc, dep) => ({ ...acc, [dep]: dep }), {}),
 	optimization: {
 		usedExports: true,
 		minimizer: [
-			"...",
+			'...',
 			new CssMinimizerPlugin({
 				minify: CssMinimizerPlugin.lightningCssMinify,
-				test: /\.(css | less | s[ac]ss | styl)(\?.*)?$/i,
+				test: /\.(css)(\?.*)?$/i,
 				minimizerOptions: {
-					preset: 'advanced'
-				}
-			})
-		]
+					preset: 'advanced',
+				},
+			}),
+		],
 	},
 	plugins: [
 		new EslintWebpackPlugin({
 			fix: true,
-			threads: true
-		})
-	]
-}
+			threads: true,
+		}),
+	],
+};
 
 module.exports = config;
