@@ -1,12 +1,10 @@
 {
 	"root": true,
 	"parser": "@typescript-eslint/parser",
-	"plugins": [
-		"@typescript-eslint",
-		"import"
-	],
+	"plugins": ["@typescript-eslint", "import", "prettier"],
 	"extends": [
 		"plugin:react-hooks/recommended",
+		"prettier",
 		"eslint:recommended",
 		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended"
@@ -16,15 +14,16 @@
 		"browser": true
 	},
 	"rules": {
-		"indent": [
-			"warn",
-			"tab"
-		],
+		"indent": ["warn", "tab"],
 		"no-implicit-coercion": "off",
-		"react-hooks/exhaustive-deps": ["warn", {
-			// Add more custom hooks with deps here
-			"additionalHooks": ""
-		}]
+		"react-hooks/exhaustive-deps": [
+			"warn",
+			{
+				// Add more custom hooks with deps here
+				"additionalHooks": ""
+			}
+		],
+		"prettier/prettier": "error"
 	},
 	"settings": {
 		"node": {
@@ -39,10 +38,5 @@
 			}
 		}
 	},
-	"ignorePatterns": [
-		"*.md",
-		"*.mdx",
-		"*.js",
-		"package.json"
-	]
+	"ignorePatterns": ["*.md", "*.mdx", "*.js", "package.json"]
 }
