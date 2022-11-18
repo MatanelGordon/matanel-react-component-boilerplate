@@ -7,13 +7,14 @@
 	],
 	"extends": [
 		"plugin:react-hooks/recommended",
-		"stylelint",
 		"eslint:recommended",
 		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended"
 	],
 	"env": {
-		"es6": true
+		"es6": true,
+		"browser": true,
+		"jest": true
 	},
 	"rules": {
 		"indent": [
@@ -41,9 +42,8 @@
 	},
 	"ignorePatterns": [
 		"*.md",
-		"*.msx",
+		"*.mdx",
 		"*.js",
-		"package.json",
-		"*.css"
+		"package.json"
 	]
 }
