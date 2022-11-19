@@ -1,7 +1,7 @@
 /** @type {import('@storybook/react/types').StorybookConfig} */
 module.exports = {
 	typescript: {
-		reactDocgen: false
+		reactDocgen: false,
 	},
 	stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
 	addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
@@ -9,7 +9,6 @@ module.exports = {
 	features: {
 		previewMdx2: true,
 		storyStoreV7: true,
-		breakingChangesV7: true,
 	},
 	core: {
 		builder: '@storybook/builder-webpack5',
