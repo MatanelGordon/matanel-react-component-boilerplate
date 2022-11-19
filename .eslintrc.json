@@ -1,7 +1,7 @@
 {
 	"root": true,
 	"parser": "@typescript-eslint/parser",
-	"plugins": ["@typescript-eslint", "import", "prettier"],
+	"plugins": ["@typescript-eslint", "import"],
 	"extends": [
 		"plugin:react-hooks/recommended",
 		"prettier",
@@ -22,8 +22,7 @@
 				// Add more custom hooks with deps here
 				"additionalHooks": ""
 			}
-		],
-		"prettier/prettier": "error"
+		]
 	},
 	"settings": {
 		"node": {
