@@ -3,6 +3,7 @@
 	"parser": "@typescript-eslint/parser",
 	"plugins": ["@typescript-eslint", "import"],
 	"extends": [
+		"plugin:storybook/recommended",
 		"plugin:react-hooks/recommended",
 		"prettier",
 		"eslint:recommended",

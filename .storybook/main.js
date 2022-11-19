@@ -6,9 +6,47 @@ module.exports = {
 	framework: '@storybook/react',
 	features: {
 		previewMdx2: true,
-		storyStoreV7: true
+		storyStoreV7: true,
+		breakingChangesV7: true,
 	},
 	core: {
 		builder: '@storybook/builder-webpack5',
 	},
-}
+	webpackFinal(config) {
+		return {
+			...config,
+			module: {
+				...config.module,
+				rules: [
+					...config.module.rules,
+					{
+						test: /\.s[ca]ss$/,
+						use: [
+							'style-loader',
+							{
+								loader: 'css-loader',
+								options: {
+									modules: {
+										auto: true,
+									},
+								},
+							},
+							{
+								loader: 'postcss-loader',
+								options: {
+									implementation: require('postcss'),
+								},
+							},
+							{
+								loader: 'sass-loader',
+								options: {
+									implementation: require('sass'),
+								},
+							},
+						],
+					},
+				],
+			},
+		};
+	},
+};

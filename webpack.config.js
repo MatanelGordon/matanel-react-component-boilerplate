@@ -5,14 +5,6 @@ const EslintWebpackPlugin = require('eslint-webpack-plugin');
 const pkg = require('./package.json');
 
 const OUT_DIR = "dist";
-const cssLoader = {
-	loader: "css-loader",
-	options: {
-		modules: {
-			auto: true
-		}
-	}
-}
 
 const config = {
 	mode: 'production',
@@ -54,14 +46,27 @@ const config = {
 				exclude: /node_modules/,
 			},
 			{
-				test: /\.css$/,
+				test: /\.s[ca]ss$/,
 				use: [
 					'style-loader',
-					cssLoader,
+					{
+						loader: "css-loader",
+						options: {
+							modules: {
+								auto: true
+							}
+						}
+					},
 					{
 						loader: 'postcss-loader',
 						options: {
 							implementation: require('postcss'),
+						},
+					},
+					{
+						loader: "sass-loader",
+						options: {
+							implementation: require("sass"),
 						},
 					},
 				],
@@ -90,7 +95,7 @@ const config = {
 			'...',
 			new CssMinimizerPlugin({
 				minify: CssMinimizerPlugin.lightningCssMinify,
-				test: /\.(css)(\?.*)?$/i,
+				test: /\.(css|s[ac]ss)(\?.*)?$/i,
 				minimizerOptions: {
 					preset: 'advanced',
 				},

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import styles from './Button.module.scss';
 
 export interface ButtonProps {
 	size: 'sm' | 'md' | 'lg';
@@ -9,8 +10,8 @@ export interface ButtonProps {
 
 export const Button: FC<ButtonProps> = (props) => {
 	return (
-		<button>
-			<i aria-hidden="true" className="button-bg" />
+		<button className={styles['button']}>
+			<i aria-hidden="true" className={styles['buttonBg']} />
 			{props.label}
 		</button>
 	);

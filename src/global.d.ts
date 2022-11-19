@@ -1,4 +1,5 @@
 // add files extensions here when needed
+declare module '*.scss';
 declare module '*.css';
 declare module '*.png';
 declare module '*.svg';

@@ -1,0 +1,12 @@
+.button {
+	isolation: isolate;
+	box-sizing: border-box;
+	border-radius: 16px;
+	border: 1px solid red;
+	padding: .25em 1em;
+	font-size: 2rem;
+
+	.button-bg {
+		position: absolute;
+	}
+}
