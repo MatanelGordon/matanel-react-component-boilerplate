@@ -6,18 +6,23 @@
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"build": "webpack",
-		"start": "npm run storybook",
 		"build:watch": "webpack -w",
+		"start": "npm run storybook",
 		"check": "tsc --noEmit",
 		"test": "vitest run",
 		"test:dev": "vitest",
 		"test:ui": "vitest --ui",
 		"prepare": "husky install",
 		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook"
+		"build-storybook": "build-storybook",
+		"prepublish": "npm t && npm run build"
 	},
 	"files": [
 		"dist/"
+	],
+	"browserslist": [
+		"defaults and supports es6-module",
+		"maintained node versions"
 	],
 	"devDependencies": {
 		"@storybook/addon-actions": "^6.5.13",
@@ -79,5 +84,8 @@
 	],
 	"peerDependencies": {
 		"react": "^16 || ^17 || ^18"
+	},
+	"dependencies": {
+		"@mdx-js/react": "^2.1.5"
 	}
 }
