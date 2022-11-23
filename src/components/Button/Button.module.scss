@@ -1,12 +1,73 @@
+@property --bg-angle {
+	syntax: "<angle>";
+	inherits: true;
+	initial-value: 0deg;
+}
+
+@keyframes spinning {
+	from {
+		--bg-angle: 0deg;
+	}
+
+	to {
+		--bg-angle: 1turn;
+	}
+}
+
+$light-color: #efefef;
+$dark-color: #313131;
+
 .button {
-	isolation: isolate;
-	box-sizing: border-box;
+	--border-width: 5px;
+
 	border-radius: 16px;
-	border: 1px solid red;
+	cursor: pointer;
+	border: none;
 	padding: .25em 1em;
-	font-size: 2rem;
+	position: relative;
+	font-family: system-ui;
+	background: var(--bg-color);
+	color: var(--txt-color);
+
+	&.dark{
+		--bg-color: #{$dark-color};
+		--txt-color: #{$light-color};
+	}
+
+	&.light{
+		--bg-color: #{$light-color};
+		--txt-color: #{$dark-color};
+	}
+
+	&.button-sm {
+		font-size: .75rem;
+	}
+
+	&.button-md {
+		font-size: 1.5rem;
+	}
+
+	&.button-lg {
+		font-size: 2rem;
+	}
+
+	&:where(:hover:not(:disabled), :focus){
+		--border-width: 7px;
+
+		animation: spinning linear 3s infinite;
+	}
 
 	.button-bg {
+		display: block;
 		position: absolute;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		left: 50%;
+		z-index: -1;
+		border-radius: inherit;
+		width: calc(100% + var(--border-width));
+		height: calc(100% + var(--border-width));
+		background: conic-gradient(from var(--bg-angle), #be116c, #5713b2);
+		filter: blur(5px);
 	}
 }

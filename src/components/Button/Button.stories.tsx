@@ -11,7 +11,14 @@ export default {
 	argTypes: {
 		backgroundColor: { control: 'color' },
 		size: {
-			options: ['lg', 'md', 'sm'],
+			options: ['sm', 'md', 'lg'],
+			control: { type: 'radio' },
+		},
+		label: {
+			control: { type: 'text' },
+		},
+		mode: {
+			options: ['light', 'dark'],
 			control: { type: 'radio' },
 		},
 	},
@@ -24,10 +31,12 @@ export const Large = Template.bind({});
 Large.args = {
 	size: 'lg',
 	label: 'Button',
+	mode: 'dark',
 };
 
 export const Small = Template.bind({});
 Small.args = {
 	size: 'sm',
 	label: 'Button',
+	mode: 'dark',
 };
