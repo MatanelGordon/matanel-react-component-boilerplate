@@ -14,8 +14,7 @@
 		"test:ui": "vitest --ui",
 		"prepare": "husky install",
 		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook",
-		"prepublish": "npm t && npm run build"
+		"build-storybook": "build-storybook"
 	},
 	"files": [
 		"dist/"
