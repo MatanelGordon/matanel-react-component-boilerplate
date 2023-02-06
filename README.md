@@ -58,7 +58,7 @@ Goodluck :)
 ## Preprocessors Integration
 In order to add more rules - Modify `webpack.config.js` file, from there, it will sync all rules with storybook and allow you to enjoy it both in dev and production.
 
-> Also, there might be cases where you need to 
+> Also, there might be cases where you need to change other configurations such as eslint, postcss and stylelint
 
 ### Switching to sass
 
