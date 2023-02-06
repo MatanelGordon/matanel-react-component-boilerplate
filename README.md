@@ -7,6 +7,9 @@ Technologies:
 - Vitest
 - React
 - SCSS (for Sass look [here](#Switching-to-sass))
+- postCSS
+- husky + lint-staged
+- eslint + prettier
 
 Features:
 - Zero storybook-production mismatch
