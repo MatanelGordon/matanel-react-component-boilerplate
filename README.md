@@ -14,7 +14,7 @@ Technologies:
 Features:
 - Zero storybook-production mismatch
 - Unit Tests (using `vitest`)
-- Full control over each configuration
+- **Full control** over each configuration
 - CSS Preprocessors support
 - CSS Modules support
 
