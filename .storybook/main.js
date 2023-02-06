@@ -1,3 +1,6 @@
+const mergeConfigs = require('webpack-merge');
+const webpackProdModule = require('../webpack.config').module;
+
 /** @type {import('@storybook/react/types').StorybookConfig} */
 module.exports = {
 	typescript: {
@@ -12,48 +15,14 @@ module.exports = {
 	},
 	core: {
 		builder: {
-			name:'@storybook/builder-webpack5',
+			name: '@storybook/builder-webpack5',
 			options: {
 				lazyCompilation: true,
-				fsCache: true
-			}
+				fsCache: true,
+			},
 		},
 	},
 	webpackFinal(config) {
-		return {
-			...config,
-			module: {
-				...config.module,
-				rules: [
-					...config.module.rules,
-					{
-						test: /\.s[ca]ss$/,
-						use: [
-							'style-loader',
-							{
-								loader: 'css-loader',
-								options: {
-									modules: {
-										auto: true,
-									},
-								},
-							},
-							{
-								loader: 'postcss-loader',
-								options: {
-									implementation: require('postcss'),
-								},
-							},
-							{
-								loader: 'sass-loader',
-								options: {
-									implementation: require('sass'),
-								},
-							},
-						],
-					},
-				],
-			},
-		};
+		return mergeConfigs.merge(config, { module: webpackProdModule });
 	},
 };
