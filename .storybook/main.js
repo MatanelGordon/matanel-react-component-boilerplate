@@ -1,5 +1,5 @@
 const mergeConfigs = require('webpack-merge');
-const webpackProdModule = require('../webpack.config').module;
+const webpackProd = require('../webpack.config');
 
 /** @type {import('@storybook/react/types').StorybookConfig} */
 module.exports = {
@@ -23,6 +23,6 @@ module.exports = {
 		},
 	},
 	webpackFinal(config) {
-		return mergeConfigs.merge(config, { module: webpackProdModule });
+		return mergeConfigs.merge(config, { module: webpackProd.module, plugins: webpackProd.plugins });
 	},
 };
