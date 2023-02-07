@@ -1,10 +1,11 @@
 const path = require('path');
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const EslintWebpackPlugin = require('eslint-webpack-plugin');
 
 const pkg = require('./package.json');
+const StylelintWebpackPlugin = require('stylelint-webpack-plugin');
 
-const OUT_DIR = "dist";
+const OUT_DIR = 'dist';
 
 const config = {
 	mode: 'production',
@@ -50,12 +51,12 @@ const config = {
 				use: [
 					'style-loader',
 					{
-						loader: "css-loader",
+						loader: 'css-loader',
 						options: {
 							modules: {
-								auto: true
-							}
-						}
+								auto: true,
+							},
+						},
 					},
 					{
 						loader: 'postcss-loader',
@@ -64,9 +65,9 @@ const config = {
 						},
 					},
 					{
-						loader: "sass-loader",
+						loader: 'sass-loader',
 						options: {
-							implementation: require("sass"),
+							implementation: require('sass'),
 						},
 					},
 				],
@@ -77,7 +78,7 @@ const config = {
 			},
 			{
 				test: /\.svg$/,
-				type: 'asset/inline'
+				type: 'asset/inline',
 			},
 		],
 	},
@@ -104,6 +105,10 @@ const config = {
 	},
 	plugins: [
 		new EslintWebpackPlugin({
+			fix: true,
+			threads: true,
+		}),
+		new StylelintWebpackPlugin({
 			fix: true,
 			threads: true,
 		}),
