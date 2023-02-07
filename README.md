@@ -137,3 +137,5 @@ to install `stylelint-config-recommended-less`:
 ```bash
 npm i -D stylelint-config-recommended-less
 ```
+
+> Don't forget to change to `stylelint-config-recommended-less` in `stylelint.config.js` file
