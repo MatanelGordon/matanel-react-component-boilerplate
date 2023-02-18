@@ -5,11 +5,14 @@ const EslintWebpackPlugin = require('eslint-webpack-plugin');
 const pkg = require('./package.json');
 const StylelintWebpackPlugin = require('stylelint-webpack-plugin');
 
+const NODE_ENV = process.env['NODE_ENV'];
+
 const OUT_DIR = 'dist';
+const ENABLE_SOURCE_MAP = NODE_ENV !== 'production';
 
 const config = {
 	mode: 'production',
-	devtool: process.env['NODE_ENV'] === 'development' ? 'inline-source-map' : 'source-map',
+	devtool: NODE_ENV === 'development' ? 'inline-source-map' : 'source-map',
 	entry: {
 		main: './src/index.ts',
 	},
@@ -35,11 +38,11 @@ const config = {
 				use: {
 					loader: 'ts-loader',
 					options: {
-						configFile: 'tsconfig.prod.json',
+						configFile: 'tsconfig.json',
 						compilerOptions: {
 							outDir: OUT_DIR,
-							target: 'esnext',
-							module: 'esnext',
+							sourceMap: ENABLE_SOURCE_MAP,
+							declaration: true,
 						},
 						onlyCompileBundledFiles: true,
 					},
