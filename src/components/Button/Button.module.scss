@@ -1,5 +1,5 @@
 @property --bg-angle {
-	syntax: "<angle>";
+	syntax: '<angle>';
 	inherits: true;
 	initial-value: 0deg;
 }
@@ -23,24 +23,24 @@ $dark-color: #313131;
 	border-radius: 1rem;
 	cursor: pointer;
 	border: none;
-	padding: .25em 1em;
+	padding: 0.25em 1em;
 	position: relative;
 	font-family: system-ui;
 	background: var(--bg-color);
 	color: var(--txt-color);
 
-	&.dark{
+	&.dark {
 		--bg-color: #{$dark-color};
 		--txt-color: #{$light-color};
 	}
 
-	&.light{
+	&.light {
 		--bg-color: #{$light-color};
 		--txt-color: #{$dark-color};
 	}
 
 	&.button-sm {
-		font-size: .75rem;
+		font-size: 0.75rem;
 	}
 
 	&.button-md {
@@ -51,7 +51,7 @@ $dark-color: #313131;
 		font-size: 2rem;
 	}
 
-	&:where(:hover:not(:disabled), :focus){
+	&:where(:hover:not(:disabled), :focus) {
 		--border-width: 7px;
 
 		animation: spinning linear 3s infinite;
