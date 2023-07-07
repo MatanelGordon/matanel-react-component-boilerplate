@@ -1,6 +1,5 @@
 const path = require('path');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const EslintWebpackPlugin = require('eslint-webpack-plugin');
 
 const pkg = require('./package.json');
 const StylelintWebpackPlugin = require('stylelint-webpack-plugin');
@@ -107,13 +106,8 @@ const config = {
 		],
 	},
 	plugins: [
-		new EslintWebpackPlugin({
-			fix: true,
-			threads: true,
-		}),
 		new StylelintWebpackPlugin({
 			fix: true,
-			threads: true,
 		}),
 	],
 };
