@@ -107,10 +107,10 @@ const config = {
 		],
 	},
 	plugins: [
-		// new EslintWebpackPlugin({
-		// 	fix: true,
-		// 	threads: true,
-		// }),
+		new EslintWebpackPlugin({
+			fix: true,
+			threads: true,
+		}),
 		new StylelintWebpackPlugin({
 			fix: true,
 			threads: true,
