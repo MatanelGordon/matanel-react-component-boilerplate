@@ -1,5 +1,4 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
 import { Button } from './Button';
 
@@ -9,7 +8,7 @@ export default {
 	component: Button,
 	// More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 	argTypes: {
-		backgroundColor: { control: 'color' },
+		background: { control: 'color' },
 		size: {
 			options: ['sm', 'md', 'lg'],
 			control: { type: 'radio' },
@@ -22,10 +21,10 @@ export default {
 			control: { type: 'radio' },
 		},
 	},
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: StoryFn<typeof Button> = (args) => <Button {...args} />;
 
 export const Large = Template.bind({});
 Large.args = {
