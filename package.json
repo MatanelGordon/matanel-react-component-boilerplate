@@ -1,5 +1,5 @@
 {
-	"name": "react-webpack5-storybook-typescript-boilerplate",
+	"name": "react-component-boilerplate",
 	"version": "1.0.0",
 	"module": "dist/index.js",
 	"main": "dist/index.js",
