@@ -9,6 +9,7 @@
 		"strict": true,
 		"allowSyntheticDefaultImports": true,
 		"noImplicitAny": true,
+		"skipLibCheck": true,
 		"moduleResolution": "Node"
 	},
 	"include": ["src"],

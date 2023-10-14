@@ -21,7 +21,7 @@ export default {
 			control: { type: 'radio' },
 		},
 	},
-} as Meta<typeof Button>;
+} satisfies Meta<typeof Button>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: StoryFn<typeof Button> = (args) => <Button {...args} />;
